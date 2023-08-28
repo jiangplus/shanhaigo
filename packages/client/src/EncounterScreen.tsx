@@ -28,7 +28,7 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
         appear ? "opacity-100" : "opacity-0"
       )}
     >
-      <div className="text-8xl animate-bounce">{monsterEmoji}</div>
+      <div className="text-8xl animate-bounce"><img width="200" src="https://go.shanhaiwoo.com/jelly.svg" /></div>
       <div>出现一块水母碎片!</div>
 
       <div className="flex gap-2">
@@ -38,6 +38,8 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
           onClick={async () => {
             const toastId = toast.loading("Throwing emojiball…");
             const result = await throwBall();
+            let yourname = prompt("give me your name")
+            console.log('yourname', yourname)
 
             if (result === MonsterCatchResult.Caught) {
               toast.update(toastId, {
