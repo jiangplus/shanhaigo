@@ -29,7 +29,7 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
       )}
     >
       <div className="text-8xl animate-bounce">{monsterEmoji}</div>
-      <div>A wild {monsterName} appears!</div>
+      <div>出现一块水母碎片!</div>
 
       <div className="flex gap-2">
         <button
@@ -38,11 +38,12 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
           onClick={async () => {
             const toastId = toast.loading("Throwing emojiball…");
             const result = await throwBall();
+
             if (result === MonsterCatchResult.Caught) {
               toast.update(toastId, {
                 isLoading: false,
                 type: "success",
-                render: `You caught the ${monsterName}!`,
+                render: `你收集了水母碎片!`,
                 autoClose: 5000,
                 closeButton: true,
               });
@@ -50,7 +51,7 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
               toast.update(toastId, {
                 isLoading: false,
                 type: "default",
-                render: `Oh no, the ${monsterName} fled!`,
+                render: `水母碎片游走了！`,
                 autoClose: 5000,
                 closeButton: true,
               });
@@ -58,7 +59,7 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
               toast.update(toastId, {
                 isLoading: false,
                 type: "error",
-                render: "You missed!",
+                render: "你错过了!",
                 autoClose: 5000,
                 closeButton: true,
               });
