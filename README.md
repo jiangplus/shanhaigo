@@ -1,6 +1,7 @@
-# Emojimon
+# Shanhai Go
 
-> Create a Pokémon-inspired on-chain game with [MUD](https://mud.dev/)
+> 基于 [MUD](https://mud.dev/) 的全链游戏
+
 
 ### [Read the tutorial on mud.dev &rarr;](https://mud.dev/tutorials/emojimon/)
 
