@@ -25,7 +25,7 @@ export const GameBoard = () => {
       ? {
           x: playerPosition.x,
           y: playerPosition.y,
-          emoji: "🤠",
+          emoji: "🪼",
           entity: playerEntity,
         }
       : null;
