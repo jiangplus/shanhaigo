@@ -38,8 +38,12 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
           onClick={async () => {
             const toastId = toast.loading("Throwing emojiball…");
             const result = await throwBall();
-            let yourname = prompt("give me your name")
+            let yourname = prompt("何时何地让你感觉到最快乐")
             console.log('yourname', yourname)
+
+// 1. 你最珍惜的财产是什么
+// 2. 何时何地让你感觉到最快乐
+// 3. 你的座右铭是什么
 
             if (result === MonsterCatchResult.Caught) {
               toast.update(toastId, {
@@ -72,7 +76,7 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
             }
           }}
         >
-          ☄️ Throw
+          ☄️ 收集碎片
         </button>
         <button
           type="button"
@@ -83,13 +87,13 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
             toast.update(toastId, {
               isLoading: false,
               type: "default",
-              render: `You ran away!`,
+              render: `你离开了!`,
               autoClose: 5000,
               closeButton: true,
             });
           }}
         >
-          🏃‍♂️ Run
+          🏃‍♂️ 不需要
         </button>
       </div>
     </div>
