@@ -17,7 +17,7 @@ export function createSystemCalls(
     }
     return [(x + mapConfig.width) % mapConfig.width, (y + mapConfig.height) % mapConfig.height];
   };
- 
+
   const isObstructed = (x: number, y: number) => {
     return runQuery([Has(Obstruction), HasValue(Position, { x, y })]).size > 0;
   };

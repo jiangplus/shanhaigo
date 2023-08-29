@@ -9,6 +9,14 @@ type Props = {
   monsterEmoji: string;
 };
 
+const questions = [
+  "你最珍惜的财产是什么",
+  "何时何地让你感觉到最快乐",
+  "你的座右铭是什么",
+]
+
+let index = 0
+
 export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
   const {
     systemCalls: { throwBall, fleeEncounter },
@@ -24,7 +32,6 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
   return (
     <div
       className={twMerge(
-        "flex flex-col gap-10 items-center justify-center bg-black text-white transition-opacity duration-1000",
         appear ? "opacity-100" : "opacity-0"
       )}
     >
@@ -36,14 +43,20 @@ export const EncounterScreen = ({ monsterName, monsterEmoji }: Props) => {
           type="button"
           className="bg-stone-600 hover:ring rounded-lg px-4 py-2"
           onClick={async () => {
+            if (index === 3) {
+              // open the final scene
+              let answer = `
+在人生的征途中，请牢记世上无难事，只要心怀决心和坚定毅力。踏着这信念，你定能战胜一切困境。而当你感到疲惫时，不妨去亲近大自然的怀抱，那里有宁静的湖泊、欢乐的鸟语，能为你带来无限的快乐与宁静，让心灵重新充盈，继续前行的脚步。
+              `
+              alert(answer)
+              return
+            }
+
             const toastId = toast.loading("Throwing emojiball…");
             const result = await throwBall();
-            let yourname = prompt("何时何地让你感觉到最快乐")
+            let yourname = prompt(questions[index++])
             console.log('yourname', yourname)
 
-// 1. 你最珍惜的财产是什么
-// 2. 何时何地让你感觉到最快乐
-// 3. 你的座右铭是什么
 
             if (result === MonsterCatchResult.Caught) {
               toast.update(toastId, {
